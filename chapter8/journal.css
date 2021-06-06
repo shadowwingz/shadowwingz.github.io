@@ -1,0 +1,30 @@
+@font-face {
+    /* 这里的字体名称可以随便定义 */
+    font-family: "Emblema One";
+    src: url("./font/EmblemaOne-Regular.woff"),
+    url("./font/EmblemaOne-Regular.ttf");
+}
+
+body {
+    font-family: Verdana, Geneva, Arial, sans-serif;
+    font-size: small;
+}
+
+h1, h2 {
+    color: #cc6600;
+    border-bottom: thin dotted #888888;
+}
+
+h1 {
+    /**
+    这里引用的是 @font-face 中的 font-family 字段值，
+    并且 h1 的字体覆盖了 body 的字体
+     */
+    font-family: "Emblema One", "sans-serif";
+    font-size: 220%;
+}
+
+h2 {
+    font-size: 130%;
+    font-weight: normal;
+}
