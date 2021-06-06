@@ -1,0 +1,33 @@
+body {
+    font-size: small;
+    font-family: Verdana, Helvetica, sans-serif;
+    line-height: 1.6em;
+}
+
+h1, h2 {
+    color: #007e7e;
+}
+
+h1 {
+    font-size: 150%;
+}
+
+/* 除了可以针对某类元素定义样式外（比如 body），我们还可以针对某一个元素定义其样式，
+ 具体的方法是给元素定义一个 id，然后对这个 id 来定义样式*/
+#guarantee {
+    line-height: 1.9em;
+    font-style: italic;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    color: #444444;
+    background-color: #a7cece;
+    border-color: white;
+    border-width: 1px;
+    border-style: dashed;
+    padding: 25px;
+    padding-left: 80px;
+    margin: 30px;
+    margin-right: 250px;
+    background-image: url("images/background.gif");
+    background-repeat: no-repeat;
+    background-position: top left;
+}
