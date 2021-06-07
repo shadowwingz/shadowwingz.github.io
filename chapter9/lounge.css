@@ -31,3 +31,13 @@ h1 {
     background-repeat: no-repeat;
     background-position: top left;
 }
+
+/* class 为 greentea 的元素，颜色为绿色  */
+.greentea {
+    color: green;
+}
+
+/* class 为 bluetea 的 p 元素，颜色为蓝色 */
+p.bluetea {
+    color: blue;
+}

@@ -1,0 +1,13 @@
+#guarantee {
+    background-image: url("images/background.gif");
+    background-repeat: no-repeat;
+    padding-left: 80px;
+    margin: 30px;
+    background-color: #a7cece;
+    border: 1px dashed white;
+    background-position: top left;
+    color: #444444;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-style: italic;
+    line-height: 1.9em;
+}
