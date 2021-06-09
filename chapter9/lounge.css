@@ -14,7 +14,7 @@ h1 {
 
 /* 除了可以针对某类元素定义样式外（比如 body），我们还可以针对某一个元素定义其样式，
  具体的方法是给元素定义一个 id，然后对这个 id 来定义样式*/
-#guarantee {
+.guarantee {
     line-height: 1.9em;
     font-style: italic;
     font-family: Georgia, "Times New Roman", Times, serif;
@@ -27,7 +27,11 @@ h1 {
     padding-left: 80px;
     margin: 30px;
     margin-right: 250px;
-    background-image: url("images/background.gif");
+    /* background-image 可以给任何元素设置背景，但是它和 <img> 有区别，
+    使用 background-image 是先有元素，再有图片背景，背景是依附元素存在的，
+    而 <img> 是单纯的图片，不必依附其他元素存在。
+     */
+    background-image: url(images/background.gif);
     background-repeat: no-repeat;
     background-position: top left;
 }

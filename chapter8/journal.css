@@ -21,6 +21,8 @@ h1 {
     并且 h1 的字体覆盖了 body 的字体
      */
     font-family: "Emblema One", "sans-serif";
+    /* 这里指定字体大小为 220%，是相对于 body 字体的 220%，如果 body 字体变化，
+     h1 的字体大小也会跟着变化，但始终是 body 字体的 220% */
     font-size: 220%;
 }
 
