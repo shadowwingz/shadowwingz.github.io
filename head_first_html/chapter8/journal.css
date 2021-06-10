@@ -1,8 +1,8 @@
 @font-face {
     /* 这里的字体名称可以随便定义 */
     font-family: "Emblema One";
-    src: url("./font/EmblemaOne-Regular.woff"),
-    url("./font/EmblemaOne-Regular.ttf");
+    src: url("font/EmblemaOne-Regular.woff"),
+    url("font/EmblemaOne-Regular.ttf");
 }
 
 body {
