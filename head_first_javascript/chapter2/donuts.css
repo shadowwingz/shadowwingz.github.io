@@ -1,0 +1,24 @@
+body {
+    font: 14px Arial;
+    text-align: center;
+}
+
+#frame {
+    margin-top: 15px;
+    width: 440px;
+}
+
+div.heading {
+    font: 20px Arial;
+    font-weight: bold;
+}
+
+div.subheading {
+    font: 15px Arial;
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+div.field {
+    text-align: right;
+}

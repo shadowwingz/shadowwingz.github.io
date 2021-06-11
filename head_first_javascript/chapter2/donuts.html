@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Duncan's Just-In-Time Donuts</title>
+        <link rel="stylesheet" type="text/css" href="donuts.css">
+        <script type="text/javascript">
+            function updateOrder() {
+
+            }
+        </script>
+    </head>
+    <body>
+        <div id="frame">
+            <div class="heading">Duncan's Just-In_Time Donuts</div>
+            <div class="subheading">All donuts 50 cents each, cake or glazed!</div>
+            <div id="left">
+                <img src="donuttime.png" alt="Just-In-Time Donuts">
+            </div>
+            <form name="orderform" action="donuts.php" method="post">
+                <div class="field">
+                    Name:<input type="text" id="name" name="name" value="">
+                </div>
+                <div class="field">
+                    # of cake donuts:
+                    <input type="text" id="cakedonuts" name="cakedonuts" value="" onchange="updateOrder()">
+                </div>
+            </form>
+        </div>
+    </body>
+</html>
