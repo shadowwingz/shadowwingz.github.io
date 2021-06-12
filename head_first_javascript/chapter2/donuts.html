@@ -6,24 +6,83 @@
         <link rel="stylesheet" type="text/css" href="donuts.css">
         <script type="text/javascript">
             function updateOrder() {
+                const TAXRATE = 0.0925;
+                const DONUTPRICE = 0.5;
+                var numCakeDonuts = parseDonuts(document.getElementById("cakedonuts").value);
+                var numGlazedDonuts = parseDonuts(document.getElementById("glazeddonuts").value);
+                if (isNaN(numCakeDonuts)) {
+                    numCakeDonuts = 0;
+                }
+                if (isNaN(numGlazedDonuts)) {
+                    numGlazedDonuts = 0;
+                }
+                var subTotal = (numCakeDonuts + numGlazedDonuts) * DONUTPRICE;
+                var tax = subTotal * TAXRATE
+                var total = subTotal + tax
+                document.getElementById("subtotal").value = "$" + subTotal.toFixed(2)
+                document.getElementById("tax").value = "$" + tax.toFixed(2)
+                document.getElementById("total").value = "$" + total.toFixed(2)
+            }
 
+            function parseDonuts(donutString) {
+                numDonuts = parseInt(donutString);
+                if (donutString.indexOf("打") !== -1) {
+                    numDonuts *= 12;
+                }
+                return numDonuts
+            }
+
+            function placeOrder(form) {
+                // 对姓名做判空校验
+                if (document.getElementById("name").value === "") {
+                    alert("请先输入姓名")
+                } else if (document.getElementById("pickupminutes").value === ""
+                    || isNaN(document.getElementById("pickupminutes").value)) {
+                    // 对送餐时间做判空检验
+                    alert("请输入送餐时长.");
+                } else {
+                    form.submit();
+                }
             }
         </script>
     </head>
     <body>
         <div id="frame">
-            <div class="heading">Duncan's Just-In_Time Donuts</div>
-            <div class="subheading">All donuts 50 cents each, cake or glazed!</div>
+            <div class="heading">邓肯的即时甜甜圈</div>
+            <div class="subheading">所有甜甜圈每个 50 美分，蛋糕或釉面!</div>
             <div id="left">
                 <img src="donuttime.png" alt="Just-In-Time Donuts">
             </div>
             <form name="orderform" action="donuts.php" method="post">
                 <div class="field">
-                    Name:<input type="text" id="name" name="name" value="">
+                    姓名:<input type="text" id="name" name="name" value="">
                 </div>
                 <div class="field">
-                    # of cake donuts:
+                    # 蛋糕甜甜圈:
                     <input type="text" id="cakedonuts" name="cakedonuts" value="" onchange="updateOrder()">
+                </div>
+                <div class="field">
+                    # 釉面甜甜圈:
+                    <input type="text" id="glazeddonuts" name="glazeddonuts" value="" onchange="updateOrder()">
+                </div>
+                <div class="field">
+                    几分钟到取货:
+                    <input type="text" id="pickupminutes" name="pickupminutes" value="">
+                </div>
+                <div class="field">
+                    小计:
+                    <input type="text" id="subtotal" name="subtotal" value="" readonly="readonly">
+                </div>
+                <div class="field">
+                    税:
+                    <input type="text" id="tax" name="tax" value="" readonly="readonly">
+                </div>
+                <div class="field">
+                    全部:
+                    <input type="text" id="total" name="total" value="" readonly="readonly">
+                </div>
+                <div class="field">
+                    <input type="button" value="Place Order" onclick="placeOrder(this.form);">
                 </div>
             </form>
         </div>
