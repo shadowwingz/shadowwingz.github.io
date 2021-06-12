@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>iRock - The Virtual Pet Rock</title>
+        <!-- cookie 相关的操作写在了 cookie.js 文件中 -->
+        <script type="text/javascript" src="cookie.js"></script>
+        <script type="text/javascript">
+            var userName;
+
+            function resizeRock() {
+                document.getElementById("rockImg").style.height = (document.body.clientHeight - 300) * 0.9 + "px";
+            }
+
+            function greetUser() {
+                if (navigator.cookieEnabled) {
+                    userName = readCookie("irock_username");
+                }
+                if (userName) {
+                    alert("Hello " + userName + ", I missed you.");
+                } else {
+                    alert("Hello, I am your pet rock.")
+                }
+            }
+
+            function touchRock() {
+                if (userName) {
+                    alert("I like the attention, " + userName + ". Thank you.");
+                } else {
+                    userName = prompt("What is your name?", "Enter your name here.");
+                    if (userName) {
+                        alert("It is good to meet you, " + userName + ".");
+                        if (navigator.cookieEnabled) {
+                            writeCookie("irock_username", userName, 5 * 365);
+                        } else {
+                            alert("Cookies aren't supported");
+                        }
+                    }
+                }
+                document.getElementById("rockImg").src = "../images/rock_happy.png";
+                document.getElementById("tip").textContent = "3 秒后笑容会消失";
+                setTimeout("handleTimeout()", 3000)
+            }
+
+            function handleTimeout() {
+                document.getElementById('rockImg').src='../images/rock.png';
+                document.getElementById("tip").textContent = "点击石头，石头将会笑";
+            }
+        </script>
+    </head>
+    <body onload="resizeRock(); greetUser();" onresize="resizeRock()">
+        <div style="margin-top: 100px; text-align: center">
+            <img id="rockImg" src="../images/rock.png" alt="iRock" style="cursor: pointer; height: 754px;"
+                 onclick="touchRock()">
+        </div>
+
+        <div style="text-align: center; margin-top: 50px">
+            <p id="tip">点击石头，石头将会笑</p>
+        </div>
+    </body>
+</html>
