@@ -2,32 +2,43 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>Title</title>
-    </head>
-    <body>
-        <div id="app">
-            {{message}}
-            <hr/>
-            {{msg2}}
-            <hr/>
-            {{msg}}
-            <hr/>
-            {{arr}}
-            <hr/>
-            {{json}}
-        </div>
+        <title></title>
+        <style type="text/css">
+            #demo {
+                width: 800px;
+                margin: 200px auto;
+            }
+
+            input {
+                width: 600px;
+                height: 50px;
+                border: 2px solid green;
+                padding-left: 10px;
+            }
+
+            .msg {
+                width: 600px;
+                color: red;
+            }
+        </style>
         <script src="vue.js"></script>
         <script type="text/javascript">
-            new Vue({
-                el: '#app',//
-                data: {
-                    message: 'Hello Vue!',
-                    msg2: 10,
-                    msg: true,
-                    arr: ['apple', 'banana', 'orange', 'pear'],
-                    json: {a: '张三', b: '李四', c: '王五'}
-                }
-            });
+            window.onload = function () {
+                new Vue({
+                    el: '#demo',
+                    data: {
+                        msg: 'welcome vue.js'
+                    }
+                })
+            }
         </script>
+    </head>
+    <body>
+        <div id="demo">
+            <input v-model='msg'>
+            <div class="msg">
+                {{msg}}
+            </div>
+        </div>
     </body>
 </html>
