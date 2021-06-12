@@ -23,3 +23,7 @@ function writeCookie(name, value, days) {
     alert(cookie)
     document.cookie = cookie
 }
+
+function eraseCookie(name) {
+    writeCookie(name, "", -1)
+}

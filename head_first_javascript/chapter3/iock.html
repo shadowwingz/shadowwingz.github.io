@@ -17,7 +17,7 @@
                     userName = readCookie("irock_username");
                 }
                 if (userName) {
-                    alert("Hello " + userName + ", I missed you.");
+                    alert("你好 " + userName + ", 欢迎回来.");
                 } else {
                     alert("Hello, I am your pet rock.")
                 }
@@ -25,15 +25,15 @@
 
             function touchRock() {
                 if (userName) {
-                    alert("I like the attention, " + userName + ". Thank you.");
+                    alert("感谢关注, " + userName + "");
                 } else {
-                    userName = prompt("What is your name?", "Enter your name here.");
+                    userName = prompt("请输入你的姓名?", "输入你的姓名.");
                     if (userName) {
                         alert("It is good to meet you, " + userName + ".");
                         if (navigator.cookieEnabled) {
                             writeCookie("irock_username", userName, 5 * 365);
                         } else {
-                            alert("Cookies aren't supported");
+                            alert("您的浏览器不支持 cookie");
                         }
                     }
                 }
@@ -43,11 +43,15 @@
             }
 
             function handleTimeout() {
-                document.getElementById('rockImg').src='../images/rock.png';
+                document.getElementById('rockImg').src = '../images/rock.png';
                 document.getElementById("tip").textContent = "点击石头，石头将会笑";
             }
         </script>
     </head>
+    <!--
+    onload 会在网页初次加载的时候被回调
+    onresize 会在浏览器窗口大小发生变化时被回调
+     -->
     <body onload="resizeRock(); greetUser();" onresize="resizeRock()">
         <div style="margin-top: 100px; text-align: center">
             <img id="rockImg" src="../images/rock.png" alt="iRock" style="cursor: pointer; height: 754px;"
