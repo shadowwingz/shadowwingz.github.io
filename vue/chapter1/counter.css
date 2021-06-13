@@ -1,0 +1,15 @@
+input {
+    width: 100px;
+    height: 40px;
+    background-color: #cfcfcf;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-shadow: 2px 2px 2px #888888;
+}
+
+span {
+    width: 100px;
+    display: inline-block;
+    text-align: center;
+    background-color: white;
+}

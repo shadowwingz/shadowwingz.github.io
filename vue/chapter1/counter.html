@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Hello Vue</title>
+        <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+        <link rel="stylesheet" href="counter.css">
+    </head>
+    <body>
+        <div id="app">
+            <input type="button" value="-" @click="sub()">
+            <span style="width: 60px">{{ number }}</span>
+            <input type="button" value="+" @click="add()">
+        </div>
+        <script type="text/javascript">
+            var app = new Vue({
+                el: "#app",
+                data() {
+                    return {
+                        number: 1
+                    }
+                },
+                methods: {
+                    sub: function () {
+                        if (this.number === 0) {
+                            alert("已经是最小值")
+                            return
+                        }
+                        this.number--;
+                    },
+                    add: function () {
+                        if (this.number === 10) {
+                            alert("已经是最大值")
+                            return
+                        }
+                        this.number++;
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>
