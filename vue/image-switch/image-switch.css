@@ -12,6 +12,7 @@ body,
     height: 100%;
 }
 
+/* mask 设置灰底，方便凸显子元素的白底 */
 #mask {
     background-color: #c9c9c9;
     position: relative;
@@ -19,7 +20,7 @@ body,
 
 #mask .center {
     position: absolute;
-    /* 给最外层的 mask 设置一个灰底 */
+    /* 给 mask 中的 center 设置一个白底，配合 padding，可以看到白色边框样式 */
     background-color: #fff;
     /* left 是父元素宽度的 50% */
     left: 50%;
@@ -30,58 +31,28 @@ body,
     padding: 10px;
 }
 
-#mask .center .title {
-    position: absolute;
-    display: flex;
-    align-items: center;
-    height: 56px;
-    top: -61px;
-    left: 0;
-    padding: 5px;
-    padding-left: 10px;
-    padding-bottom: 0;
-    color: rgba(175, 47, 47, 0.8);
-    font-size: 26px;
-    font-weight: normal;
-    background-color: white;
-    padding-right: 50px;
-    z-index: 2;
+/* mask 中的 center 有 2 级 img，
+使用 > 号选择最近一级 img */
+#mask .center > img {
+    /* block 可以让块元素变为行元素，如果我们想让块元素独占一行，就可以使用 block */
+    display: block;
+    /* span 元素使用 block 时，设置的宽高才能生效 */
+    width: 700px;
+    height: 458px;
 }
 
-#mask .center .title img {
-    height: 40px;
-    margin-right: 10px;
-}
-
-#mask .center .title::before {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 0;
-    border: 65px solid;
-    border-color: transparent transparent white;
-    top: -65px;
-    right: -65px;
-    z-index: 1;
-}
-
-/*#mask .center > img {*/
-/*    display: block;*/
-/*    width: 700px;*/
-/*    height: 458px;*/
-/*}*/
-
+/* mask 中的 center 中的所有 a 元素，即左右箭头 */
 #mask .center a {
-    text-decoration: none;
     width: 45px;
     height: 100px;
     position: absolute;
+    /* a 的 top 距离父元素的 top 179 px */
     top: 179px;
-    vertical-align: middle;
     opacity: 0.5;
 }
 
 #mask .center a :hover {
+    /* 鼠标移到左右箭头上，左右箭头透明度变为 80% */
     opacity: 0.8;
 }
 
@@ -89,14 +60,10 @@ body,
     left: 15px;
     text-align: left;
     padding-right: 10px;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
 }
 
 #mask .center .right {
     right: 15px;
     text-align: right;
     padding-left: 10px;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
 }

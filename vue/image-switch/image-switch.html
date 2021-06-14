@@ -11,14 +11,45 @@
         <div id="mask">
             <!-- 图片 -->
             <div class="center">
-                <img src="images/00.jpg" alt="">
-                <a href="javascript:void(0)" class="left">
-                    <img src="images/prev.png" class="left">
+                <!-- 用 :src 绑定图片，图片 index 如果发生变化，图片可以自动切换 -->
+                <img :src="imgList[index]" alt="">
+                <a class="left" @click="prev" v-show="index>0 ">
+                    <img src="images/prev.png">
                 </a>
-                <a href="javascript:void(0)" class="right">
+                <a class="right" @click="next" v-show="index<imgList.length-1">
                     <img src="images/next.png">
                 </a>
             </div>
         </div>
+
+        <script>
+            const app = new Vue({
+                el: "#mask",
+                data: {
+                    imgList: [
+                        "images/00.jpg",
+                        "images/01.jpg",
+                        "images/02.jpg",
+                        "images/03.jpg",
+                        "images/04.jpg",
+                        "images/05.jpg",
+                        "images/06.jpg",
+                        "images/07.jpg",
+                        "images/08.jpg",
+                        "images/09.jpg",
+                        "images/10.jpg"
+                    ],
+                    index: 0
+                },
+                methods: {
+                    prev() {
+                        this.index--;
+                    },
+                    next() {
+                        this.index++;
+                    }
+                }
+            })
+        </script>
     </body>
 </html>
