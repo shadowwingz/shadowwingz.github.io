@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>axios + vue</title>
+        <!-- 官网提供的 axios 在线地址 -->
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+        <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    </head>
+    <body>
+        <div id="app">
+            <input type="button" value="获取笑话" @click="getJoke()"/>
+            <p>{{joke}}</p>
+        </div>
+
+        <script>
+            var app = new Vue({
+                el: "#app",
+                data: {
+                    joke: "很好笑的笑话"
+                },
+                methods: {
+                    getJoke: function () {
+                        const that = this;
+                        axios.get("https://autumnfish.cn/api/joke")
+                            .then(function (response) {
+                                that.joke = response.data;
+                            }, function (err) {
+                                console.log(err);
+                            })
+                    },
+                }
+            });
+        </script>
+    </body>
+</html>
