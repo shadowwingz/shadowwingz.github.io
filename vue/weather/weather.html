@@ -14,28 +14,25 @@
                     <input type="text"
                            class="input_txt"
                            v-model="city"
-                           @keyup.enter="queryWeather"
+                           @keyup.enter="queryWeather()"
                            placeholder="请输入查询的天气"/>
-                    <button class="input_sub">
+                    <button class="input_sub" @click="queryWeather">
                         搜 索
                     </button>
                 </div>
                 <div class="hotkey">
-                    <a href="javascript:">北京</a>
-                    <a href="javascript:">上海</a>
-                    <a href="javascript:">广州</a>
-                    <a href="javascript:">深圳</a>
+                    <a v-for="hotCity in hotCitys" @click="changeCity(hotCity)">{{ hotCity }}</a>
                 </div>
             </div>
             <ul class="weather_list">
-                <li>
-                    <div class="info_type"><span class="iconfont">小雨</span></div>
+                <li v-for="item in forecastList">
+                    <div class="info_type"><span class="iconfont">{{ item.type }}</span></div>
                     <div class="info_temp">
-                        <b>低温 2℃</b>
+                        <b>{{ item.low }}</b>
                         ~
-                        <b>高温 19℃</b>
+                        <b>{{ item.high }}</b>
                     </div>
-                    <div class="info_date"><span>24日星期天</span></div>
+                    <div class="info_date"><span>{{ item.date }}</span></div>
                 </li>
             </ul>
         </div>
@@ -54,17 +51,24 @@
                 },
                 methods: {
                     queryWeather() {
+                        const that = this;
                         this.forecastList = []
                         axios
-                        .get(`http://wthrcdn.etouch.cn/weather_mini?city=${this.city}`)
-                        .then(res => {
-                            console.log(res);
-                            this.forecastList = res.data.data.forecast;
-                        })
-                        .catch(err => {
-                            console.log(err);
-                        })
-                        .finally(() => {});
+                            .get(`http://wthrcdn.etouch.cn/weather_mini?city=${this.city}`)
+                            .then(res => {
+                                console.log(res);
+                                that.forecastList = res.data.data.forecast;
+                                console.log(that.forecastList);
+                            })
+                            .catch(err => {
+                                console.log(err);
+                            })
+                            .finally(() => {
+                            });
+                    },
+                    changeCity(hotCity) {
+                        this.city = hotCity;
+                        this.queryWeather();
                     }
                 }
             })
