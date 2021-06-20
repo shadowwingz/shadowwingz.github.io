@@ -53,7 +53,10 @@
                     queryWeather() {
                         const that = this;
                         this.forecastList = []
-                        axios.defaults.headers.common['Pragma'] = 'no-cache'
+                        /**
+                         * 由于 chrome 浏览器现在要求接口是 https，而天气接口是 http，因此部署到 github 上接口会无法调用，
+                         * 待后续更换天气接口
+                         */
                         axios
                             .get(`http://wthrcdn.etouch.cn/weather_mini?city=${this.city}`)
                             .then(res => {
