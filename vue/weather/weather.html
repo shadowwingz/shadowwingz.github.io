@@ -53,6 +53,7 @@
                     queryWeather() {
                         const that = this;
                         this.forecastList = []
+                        axios.defaults.headers.common['Pragma'] = 'no-cache'
                         axios
                             .get(`http://wthrcdn.etouch.cn/weather_mini?city=${this.city}`)
                             .then(res => {
