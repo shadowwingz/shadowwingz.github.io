@@ -24,8 +24,7 @@
                     <!-- 搜索歌曲列表 -->
                     <div class='song_wrapper'>
                         <ul class="song_list">
-                            <li><a href="javascript:"></a> <b>你好</b> <!----></li>
-                            <li><a href="javascript:"></a> <b>你好</b> <span><i></i></span></li>
+                            <li v-for="item in musicList"><a href="javascript:"></a> <b>{{item.name}}</b> <!----></li>
                         </ul>
                         <img src="images/line.png" class="switch_btn" alt="">
                     </div>
@@ -60,5 +59,8 @@
                 </div>
             </div>
         </div>
+
+        <!-- 自定义 js 文件要在最后引入 -->
+        <script src="player.js"></script>
     </body>
 </html>
