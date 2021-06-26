@@ -5,6 +5,7 @@ var app = new Vue({
         musicList: [], // 歌曲列表
         musicUrl: "", // 播放歌曲链接
         cover: "images/cover.png", // 封面
+        hotComments: [] // 歌曲热门评论
     },
     methods: {
         searchMusic: function () {
@@ -31,6 +32,14 @@ var app = new Vue({
                 .then(function (response) {
                     console.log(response.data.songs[0].al.picUrl);
                     that.cover = response.data.songs[0].al.picUrl;
+                }, function (err) {
+                    console.log(err);
+                });
+            // 获取歌曲热门评论
+            axios.get('https://autumnfish.cn/comment/hot?type=0&id=' + musicId)
+                .then(function (response) {
+                    console.log(response)
+                    that.hotComments = response.data.hotComments;
                 }, function (err) {
                     console.log(err);
                 });
