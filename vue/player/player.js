@@ -6,7 +6,9 @@ var app = new Vue({
         musicUrl: "", // 播放歌曲链接
         cover: "images/cover.png", // 封面
         hotComments: [], // 歌曲热门评论
-        isPlaying: false, // 正在播放
+        isPlaying: false, // 正在播放,
+        mvUrl: "", // mv 链接
+        isHidingMV: true, // 显示 MV
     },
     methods: {
         searchMusic: function () {
@@ -61,6 +63,21 @@ var app = new Vue({
          */
         pause: function () {
             this.isPlaying = false;
+        },
+        playMV: function (mvId) {
+            this.isHidingMV = false;
+            const that = this;
+            axios.get('https://autumnfish.cn/mv/url?id=' + mvId)
+                .then(function (response) {
+                    console.log(response.data.data.url);
+                    that.mvUrl = response.data.data.url;
+                }, function (err) {
+                    console.log(err);
+                });
+        },
+        closeMV: function () {
+            this.isHidingMV = true;
+            this.mvUrl = "";
         }
     }
 })

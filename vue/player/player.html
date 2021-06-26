@@ -27,6 +27,9 @@
                             <li v-for="item in musicList">
                                 <a href="javascript:" @click="playMusic(item.id)"></a>
                                 <b>{{ item.name }}</b>
+                                <span>
+                                    <i @click="playMV(item.mvid)" v-if="item.mvid!==0"></i>
+                                </span>
                             </li>
                         </ul>
                         <img src="images/line.png" class="switch_btn" alt="">
@@ -58,9 +61,10 @@
                     <audio ref='audio' :src="musicUrl" @play="play" @pause="pause" controls autoplay loop
                            class="myaudio"></audio>
                 </div>
-                <div class="video_con" style="display: none;">
-                    <video controls="controls"></video>
-                    <div class="mask"></div>
+                <div class="video_con" :class="{video_display:isHidingMV}">
+                    <video controls="controls" :src="mvUrl"></video>
+                    <!-- 要控制 video 的隐藏，可以在 video 上方放置一个全屏的遮罩，点击这个遮罩隐藏 video 的父控件 -->
+                    <div class="mask" @click="closeMV()"></div>
                 </div>
             </div>
         </div>

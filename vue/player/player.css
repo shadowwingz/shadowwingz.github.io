@@ -368,3 +368,7 @@ dd {
     top: 50%;
     z-index: 995;
 }
+
+.video_display {
+    display: none;
+}
