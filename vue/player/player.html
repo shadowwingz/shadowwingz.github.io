@@ -32,7 +32,7 @@
                         <img src="images/line.png" class="switch_btn" alt="">
                     </div>
                     <!-- 歌曲信息容器 -->
-                    <div class="player_con playing">
+                    <div class="player_con" :class="{playing:isPlaying}">
                         <img src="images/player_bar.png" class="play_bar" alt=""/>
                         <!-- 黑胶碟片 -->
                         <img src="images/disc.png" class="disc autoRotate" alt=""/>
@@ -55,7 +55,8 @@
                     </div>
                 </div>
                 <div class="audio_con">
-                    <audio ref='audio' :src="musicUrl" controls autoplay loop class="myaudio"></audio>
+                    <audio ref='audio' :src="musicUrl" @play="play" @pause="pause" controls autoplay loop
+                           class="myaudio"></audio>
                 </div>
                 <div class="video_con" style="display: none;">
                     <video controls="controls"></video>

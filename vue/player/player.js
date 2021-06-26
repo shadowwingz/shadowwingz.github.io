@@ -5,7 +5,8 @@ var app = new Vue({
         musicList: [], // 歌曲列表
         musicUrl: "", // 播放歌曲链接
         cover: "images/cover.png", // 封面
-        hotComments: [] // 歌曲热门评论
+        hotComments: [], // 歌曲热门评论
+        isPlaying: false, // 正在播放
     },
     methods: {
         searchMusic: function () {
@@ -18,6 +19,11 @@ var app = new Vue({
                     console.log(err);
                 })
         },
+        /**
+         * 从歌曲列表选择音乐播放
+         *
+         * @param musicId 歌曲 id
+         */
         playMusic: function (musicId) {
             const that = this;
             // 播放音乐
@@ -44,6 +50,17 @@ var app = new Vue({
                     console.log(err);
                 });
         },
-
+        /**
+         * 音乐播放回调监听
+         */
+        play: function () {
+            this.isPlaying = true;
+        },
+        /**
+         * 音乐暂停回调监听
+         */
+        pause: function () {
+            this.isPlaying = false;
+        }
     }
 })

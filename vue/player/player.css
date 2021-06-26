@@ -274,7 +274,7 @@ dd {
     }
 }
 
-/* 旋转的类名 */
+/* 唱片的旋转效果，默认不旋转，旋转由 playing 控制 */
 .autoRotate {
     animation-name: Rotate;
     animation-iteration-count: infinite;
@@ -284,8 +284,7 @@ dd {
 }
 
 /* 是否正在播放 */
-.player_con.playing .disc,
-.player_con.playing .cover {
+.playing {
     animation-play-state: running;
 }
 
