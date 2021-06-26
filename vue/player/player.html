@@ -24,7 +24,9 @@
                     <!-- 搜索歌曲列表 -->
                     <div class='song_wrapper'>
                         <ul class="song_list">
-                            <li v-for="item in musicList" @click="playMusic(item.id)"><b>{{ item.name }}</b> <!---->
+                            <li v-for="item in musicList">
+                                <a href="javascript:" @click="playMusic(item.id)"></a>
+                                <b>{{ item.name }}</b>
                             </li>
                         </ul>
                         <img src="images/line.png" class="switch_btn" alt="">
@@ -34,7 +36,8 @@
                         <img src="images/player_bar.png" class="play_bar" alt=""/>
                         <!-- 黑胶碟片 -->
                         <img src="images/disc.png" class="disc autoRotate" alt=""/>
-                        <img src="images/cover.png" class="cover autoRotate" alt=""/>
+                        <!-- 封面 -->
+                        <img :src="this.cover" class="cover autoRotate" alt=""/>
                     </div>
                     <!-- 评论容器 -->
                     <div class="comment_wrapper">
